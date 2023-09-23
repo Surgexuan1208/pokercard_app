@@ -87,7 +87,6 @@ namespace WindowsFormsApp1
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("Cards", typeof(string));
             dataGridView1.DataSource = dataTable;
-            int[,] buffcards=new int[5,14];
             int suit = 0, rank = 0;
             Random r=new Random();
             char f=' ',ten=' ';
@@ -95,7 +94,7 @@ namespace WindowsFormsApp1
             {
                 for(int j = 1; j <= 13; j++)
                 {
-                    buffcards[i, j] = 0;
+                    cards[i, j] = "0";
                 }
             }
             for (int p = 1; p <= 4; p++)
@@ -104,24 +103,24 @@ namespace WindowsFormsApp1
                 { 
                     suit = r.Next(1, 5);
                     rank = r.Next(1, 14);
-                    while (buffcards[suit, rank] > 0)
+                    while (int.Parse(cards[suit, rank]) > 0)
                     {
                         suit = r.Next(1, 5);
                         rank = r.Next(1, 14);
                     }
-                    buffcards[suit, rank] = 1;
+                    cards[suit, rank] = "1";
                     switch (suit)
                     {
-                        case 0:
+                        case 1:
                             f = 'C';
                             break;
-                        case 1:
+                        case 2:
                             f = 'D';
                             break;
-                        case 2:
+                        case 3:
                             f = 'H';
                             break;
-                        case 3:
+                        case 4:
                             f = 'S';
                             break;
                     }
